@@ -4,7 +4,7 @@ weight: 2
 ---
 
 
-These are the components that make up a fully fledged tracing system.
+These are the components that make up a fully fledged tracing system. Spans must be transported from the services being traced to Zipkin collectors. There are two primary transports: Scribe and Kafka. Scribe is depicted.
 
 ![Architecture overview]({{ site.github.url }}/public/img/architecture-0.png)
 
