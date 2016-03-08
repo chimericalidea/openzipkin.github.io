@@ -8,19 +8,7 @@ These are the components that make up a fully fledged tracing system. Spans must
 
 ![Architecture overview]({{ site.github.url }}/public/img/architecture-0.png)
 
-Instrumented libraries
-----------------------
-
-Tracing information is collected on each host using the instrumented libraries
-and sent to Zipkin. When the host makes a request to another service, it passes
-a few tracing identifers along with the request so we can later tie the data
-together.
-
-![Instrumentation architecture]({{ site.github.url }}/public/img/architecture-1.png)
-
-To see if an instrumentation library already exists for your platform, see the
-list of [existing instrumentations]({{ site.github.url
-}}/pages/existing_instrumentations).
+Zipkin has four main components: collector, database, query service, and web UI.
 
 Transport
 ---------
@@ -54,3 +42,17 @@ Web UI
 A GUI that presents a nice face for viewing traces. The web UI provides a
 method for viewing traces based on service, time, and  annotations. Note
 that there is no built in authentication in the UI.
+
+Instrumented libraries
+----------------------
+
+Tracing information is collected on each host using the instrumented libraries
+and sent to Zipkin. When the host makes a request to another service, it passes
+a few tracing identifers along with the request so we can later tie the data
+together.
+
+![Instrumentation architecture]({{ site.github.url }}/public/img/architecture-1.png)
+
+To see if an instrumentation library already exists for your platform, see the
+list of [existing instrumentations]({{ site.github.url
+}}/pages/existing_instrumentations).
