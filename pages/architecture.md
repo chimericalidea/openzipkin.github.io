@@ -10,12 +10,6 @@ These are the components that make up a fully fledged tracing system. Spans must
 
 Zipkin has four main components: collector, database, query service, and web UI.
 
-Transport
----------
-
-Spans must be transported from the services being traced to Zipkin collectors.
-There are two primary transports, Scribe and Kafka. Scribe is deprecated.
-
 Zipkin Collector
 ----------------
 
@@ -27,7 +21,7 @@ Storage
 
 We originally built Zipkin on Cassandra for storage. It's scalable, has a
 flexible schema, and is heavily used within Twitter. However, we made this
-component pluggable, and we now have support for Redis and MySQL.
+component pluggable, and we now support Redis and MySQL.
 
 Zipkin Query Service
 --------------------
@@ -38,17 +32,16 @@ traces. The primary consumer of this api is the Web UI.
 
 Web UI
 ------
-
+A GUI that presents a nice interface for viewing traces.
 A GUI that presents a nice face for viewing traces. The web UI provides a
-method for viewing traces based on service, time, and  annotations. Note
-that there is no built in authentication in the UI.
+method for viewing traces based on service, time, and  annotations. Note that there is no built-in authentication in the UI.
 
 Instrumented libraries
 ----------------------
 
 Tracing information is collected on each host using the instrumented libraries
 and sent to Zipkin. When the host makes a request to another service, it passes
-a few tracing identifers along with the request so we can later tie the data
+a few tracing identifiers along with the request so we can later tie the data
 together.
 
 ![Instrumentation architecture]({{ site.github.url }}/public/img/architecture-1.png)
