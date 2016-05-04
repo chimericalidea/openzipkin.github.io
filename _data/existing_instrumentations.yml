@@ -3,6 +3,8 @@
     [pyramid_zipkin](https://github.com/Yelp/pyramid_zipkin)
   framework: >-
     [Pyramid](http://docs.pylonsproject.org/projects/pyramid/en/latest/)
+    Http (B3)
+  propagation: Http (B3)
   transports: >-
     [Kafka \\| Scribe](http://pyramid-zipkin.readthedocs.org/en/latest/configuring_zipkin.html#zipkin-transport-handler)
   sampling: >-
@@ -13,15 +15,26 @@
   library: >-
     [brave](https://github.com/openzipkin/brave)
   framework: Jersey, RestEASY, JAXRS2, Apache HttpClient, Mysql
+  propagation: Http (B3), gRPC (B3)
   transports: Http, Kafka, Scribe
   sampling: "Yes"
-  notes: Java 7 or higher
+  notes: Java 6 or higher
 
+- language: Java
+  library: >-
+    [Spring Cloud Sleuth](https://github.com/spring-cloud/spring-cloud-sleuth)
+  framework: Spring, Spring Cloud (e.g. Stream, Netflix)
+  propagation: Http (B3), Messaging (B3)
+  transports: Http, Spring Cloud Stream Compatible (e.g. RabbitMQ, Kafka, Redis or anything with a custom Binder)
+  sampling: "Yes"
+  notes: Java 7 or higher
+  
 - language: Scala
   library: >-
     [finagle-zipkin](https://github.com/twitter/finagle/tree/develop/finagle-zipkin) 
   framework: >-
     [Finagle](https://github.com/twitter/finagle)
+  propagation: Http (B3), Thrift
   transports: Scribe
   sampling: "Yes"
 
@@ -30,6 +43,7 @@
     [zipkin-tracer](https://github.com/openzipkin/zipkin-tracer) 
   framework: >-
     [Rack](http://rack.github.io/)
+  propagation: Http (B3)
   transports: Http, Kafka, Scribe
   sampling: "Yes"
   notes: lc support. Ruby 2.0 or higher
@@ -38,6 +52,7 @@
   library: >-
     [ZipkinTracerModule](https://github.com/mdsol/Medidata.ZipkinTracerModule) 
   framework: OWIN, HttpHandler  
+  propagation: Http (B3)
   transports: Http
   sampling: "Yes"
   notes: lc support. 4.5.2 or higher
@@ -46,5 +61,24 @@
   library: >-
     [go-zipkin](https://github.com/elodina/go-zipkin)
   framework: x/net Context
+  propagation:
   transports: Kafka
   sampling: "Yes"
+
+- language: Go
+  library: >-
+    [Go kit](https://github.com/go-kit/kit)
+  framework: Go kit
+  propagation: Http (B3), gRPC (B3)
+  transports: Kafka, Scribe
+  sampling: "Yes"
+
+- language: Scala
+  library: >-
+    [akka-tracing](https://github.com/levkhomich/akka-tracing)
+  framework: >-
+    [Akka](https://akka.io), [Spray](https://spray.io), [Play](https://www.playframework.com)
+  propagation: Http (B3), Thrift
+  transports: Scribe
+  sampling: "Yes"
+  notes: Java 6+, Scala 2.10+, activator templates for [Akka](https://github.com/levkhomich/activator-akka-tracing) and [Play](https://github.com/levkhomich/activator-play-tracing)
